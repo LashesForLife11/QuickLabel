@@ -1,0 +1,10 @@
+@import './variables.scss';
+
+* {
+    box-sizing: border-box;
+    font-family: 'Montserrat';
+}
+body {
+    margin: 0;
+    background-color: $color-white;
+}
