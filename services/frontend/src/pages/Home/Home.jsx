@@ -8,9 +8,9 @@ export default ({ addOrders }) => {
         addOrders(csvFile);
     };
     return (
-        <main>
+        <main className="container">
             <Input
-                label="Choose a .csv file"
+                label="Import orders from CSV"
                 type="file"
                 name="csv"
                 accept=".csv"

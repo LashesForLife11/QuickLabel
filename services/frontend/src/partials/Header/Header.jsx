@@ -1,3 +1,3 @@
 export default () => {
-    return <header>header</header>;
+    return <header>QuickLabel</header>;
 };

@@ -1,10 +1,18 @@
-@import './variables.scss';
+@import '@/styles/variables.scss';
 
 * {
     box-sizing: border-box;
     font-family: 'Montserrat';
 }
+
 body {
     margin: 0;
     background-color: $color-white;
+}
+
+.container {
+    width: 100%;
+    max-width: $md;
+    margin: auto;
+    padding: $p1;
 }

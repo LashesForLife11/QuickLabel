@@ -1,0 +1,16 @@
+@import '@/styles/variables.scss';
+
+.input-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+input[type='file'] {
+    display: none;
+}
+
+label {
+  box-shadow: 0 0 1px $color-black;
+  padding: .5rem 1rem;
+  cursor: pointer;
+}
