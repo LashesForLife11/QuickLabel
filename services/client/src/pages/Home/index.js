@@ -4,7 +4,7 @@ import Home from './Home';
 import { addOrders } from '@/actions';
 
 const mapState = state => ({
-    edit: state.edit,
+    orders: state.orders,
 });
 
 const mapDispatch = dispatch => ({

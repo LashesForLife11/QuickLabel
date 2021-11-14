@@ -1,6 +1,6 @@
-import { Button, Input } from '@/components';
+import {  Input, Table } from '@/components';
 
-export default ({ addOrders }) => {
+export default ({ orders, addOrders }) => {
     const uploadFile = file => {
         var csvFile = new FormData();
         csvFile.append('file', file);
@@ -18,7 +18,7 @@ export default ({ addOrders }) => {
                     uploadFile(target.files[0]);
                 }}
             />
-            <Button>Testing</Button>
+            <Table data={orders.data} />
         </main>
     );
 };

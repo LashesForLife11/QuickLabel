@@ -23,7 +23,7 @@ const readFile = fileName =>
     });
 
 app.post('/api/orders', upload.single('file'), async (req, res) => {
-    if (!req.file || !req.file.path) {
+    if (!req.file  || !req.file.path) {
         return res.json({ status: 404, data: null });
     }
 
