@@ -1,14 +1,11 @@
 import { Button, Input } from '@/components';
 
-export default ({}) => {
+export default ({ addOrders }) => {
     const uploadFile = file => {
-        var data = new FormData()
-        data.append('file', file)
+        var csvFile = new FormData();
+        csvFile.append('file', file);
 
-        fetch('http://localhost:9090/api/csv', {
-            method: 'POST',
-            body: data,
-        });
+        addOrders(csvFile);
     };
     return (
         <main>

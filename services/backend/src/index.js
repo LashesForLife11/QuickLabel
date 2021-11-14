@@ -11,7 +11,7 @@ const upload = multer({ dest: 'tmp' });
 app.use(cors());
 
 const readFile = fileName =>
-    new Promise((resolve) => {
+    new Promise(resolve => {
         const stream = [];
 
         fs.createReadStream(fileName)
@@ -22,7 +22,11 @@ const readFile = fileName =>
             });
     });
 
-app.post('/api/csv', upload.single('file'), async (req, res) => {
+app.post('/api/orders', upload.single('file'), async (req, res) => {
+    if (!req.file || !req.file.path) {
+        return res.json({ status: 404, data: null });
+    }
+
     const fileContents = await readFile(req.file.path);
     const orders = [];
 
@@ -38,7 +42,7 @@ app.post('/api/csv', upload.single('file'), async (req, res) => {
     }
     fs.unlinkSync(req.file.path);
 
-    res.json(orders);
+    res.json({ status: 200, data: orders });
 });
 
 app.get('/favicon.*', (_, res) => {
