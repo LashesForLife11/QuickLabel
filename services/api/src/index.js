@@ -23,12 +23,14 @@ const readFile = fileName =>
     });
 
 app.post('/api/orders', upload.single('file'), async (req, res) => {
-    if (!req.file  || !req.file.path) {
+    if (!req.file || !req.file.path) {
         return res.json({ status: 404, data: null });
     }
 
     const fileContents = await readFile(req.file.path);
-    const orders = [];
+
+    const labels = [];
+    const freights = [];
 
     for (let i = 0; i < fileContents.length; i++) {
         const keys = Object.keys(fileContents[i])[0].split(';');
@@ -38,11 +40,13 @@ app.post('/api/orders', upload.single('file'), async (req, res) => {
         for (let i = 0; i < keys.length; i++) {
             orderInfo[keys[i]] = values[i];
         }
-        orders.push(orderInfo);
+        orderInfo.shipping_amount === '25.00'
+            ? labels.push(orderInfo)
+            : freights.push(orderInfo);
     }
     fs.unlinkSync(req.file.path);
 
-    res.json({ status: 200, data: orders });
+    res.json({ status: 200, data: { labels, freights } });
 });
 
 app.get('/favicon.*', (_, res) => {

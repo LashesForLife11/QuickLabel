@@ -1,4 +1,4 @@
-import {  Input, Table } from '@/components';
+import { Button, Flex, Input, Table } from '@/components';
 
 export default ({ orders, addOrders }) => {
     const uploadFile = file => {
@@ -9,16 +9,20 @@ export default ({ orders, addOrders }) => {
     };
     return (
         <main className="container">
-            <Input
-                label="Import orders from CSV"
-                type="file"
-                name="csv"
-                accept=".csv"
-                onChange={({ target }) => {
-                    uploadFile(target.files[0]);
-                }}
-            />
-            <Table data={orders.data} />
+            <Flex>
+                <Input
+                    label="Import orders from CSV"
+                    type="file"
+                    name="csv"
+                    accept=".csv"
+                    onChange={({ target }) => {
+                        uploadFile(target.files[0]);
+                    }}
+                />
+                {orders.labels.length > 0 && <Button>PDF</Button>}
+            </Flex>
+            <Table data={orders.labels} />
+            <Table data={orders.freights} />
         </main>
     );
 };

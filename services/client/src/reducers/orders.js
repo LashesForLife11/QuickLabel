@@ -1,7 +1,8 @@
 import { SET_ORDERS } from '../types';
 
 const initialState = {
-    data: [],
+    labels: [],
+    freights: [],
     status: null,
 };
 
@@ -10,7 +11,8 @@ export default (state = initialState, action) => {
         case SET_ORDERS:
             return {
                 ...state,
-                data: action.orders.data || null,
+                labels: action.orders.data.labels || null,
+                freights: action.orders.data.freights || null,
                 status: action.orders.status,
             };
     }
